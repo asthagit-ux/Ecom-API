@@ -1,0 +1,578 @@
+openapi: 3.0.0
+info:
+  title: Ecommerce API
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://ecommerce-api-32d5.onrender.com/api/v1
+  variables: {}
+paths:
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login
+      operationId: Login
+      parameters: []  
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginRequest'
+              - example:
+                  email: ritesh@gmail.com
+                  password: qwerty
+            example:
+              email: ritesh@gmail.com
+              password: qwerty
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/logout:
+    get:
+      tags:
+      - Auth
+      summary: Logout
+      operationId: Logout
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register
+      operationId: Register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterRequest'
+              - example:
+                  name: ritesh
+                  email: ritesh@gmail.com
+                  password: qwerty
+            example:
+              name: ritesh
+              email: ritesh@gmail.com
+              password: qwerty
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /users:
+    get:
+      tags:
+      - Users
+      summary: Get All Users
+      operationId: GetAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The user ID
+    get:
+      tags:
+      - Users
+      summary: Get Single User
+      operationId: GetSingleUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/showMe:
+    get:
+      tags:
+      - Users
+      summary: Show Me
+      operationId: ShowMe
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/updateUser:
+    patch:
+      tags:
+      - Users
+      summary: updateUser
+      operationId: updateUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/updateUserPassword:
+    post:
+      tags:
+      - Users
+      summary: update User Password
+      operationId: updateUserPassword
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /product:
+    post:
+      tags:
+      - Product
+      summary: Create Product
+      operationId: CreateProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    get:
+      tags:
+      - Product
+      summary: Get All Product
+      operationId: GetAllProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /product/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The Product ID
+    get:
+      tags:
+      - Product
+      summary: Get Single Product
+      operationId: GetSingleProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    patch:
+      tags:
+      - Product
+      summary: Update Product
+      operationId: UpdateProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+      - Product
+      summary: Delete Product
+      operationId: DeleteProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /product/uploadImage:
+    post:
+      tags:
+      - Product
+      summary: Upload Image
+      operationId: UploadImage
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /product/{id}/reviews:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description:  Product Review ID
+    get:
+      tags:
+      - Product
+      summary: Get Single Product Reviews
+      operationId: GetSingleProductReviews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /reviews:
+    get:
+      tags:
+      - Review
+      summary: Get All Reviews
+      operationId: GetAllReviews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    post:
+      tags:
+      - Review
+      summary: Create Review
+      operationId: CreateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateReviewRequest'
+              - example:
+                  product: 658a7f971da6366194a31d00
+                  rating: 2
+                  title: Not Recommended
+                  comment: the material in very bad, only the design is good
+            example:
+              product: 658a7f971da6366194a31d00
+              rating: 2
+              title: Not Recommended
+              comment: the material in very bad, only the design is good
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /reviews/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The Product ID
+    get:
+      tags:
+      - Review
+      summary: Get Single Review
+      operationId: GetSingleReview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    patch:
+      tags:
+      - Review
+      summary: Update Review
+      operationId: UpdateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateReviewRequest'
+              - example:
+                  rating: 2
+                  title: a review Title
+                  comment: a review comment
+            example:
+              rating: 2
+              title: a review Title
+              comment: a review comment
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+      - Review
+      summary: Delete Review
+      operationId: DeleteReview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /orders:
+    get:
+      tags:
+      - Order
+      summary: Get All Orders
+      operationId: GetAllOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+      - Order
+      summary: Create Order
+      operationId: CreateOrder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateOrderRequest'
+              - example:
+                  tax: 399
+                  shippingFee: 499
+                  items:
+                  - name: accent chair
+                    price: 2599
+                    image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+                    amount: 10
+                    product: 658a7f971da6366194a31d00
+            example:
+              tax: 399
+              shippingFee: 499
+              items:
+              - name: accent chair
+                price: 2599
+                image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+                amount: 10
+                product: 658a7f971da6366194a31d00
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /orders/showAllMyOrders:
+    get:
+      tags:
+      - Order
+      summary: Show users orders
+      operationId: Showusersorders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /orders/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The Product ID
+    get:
+      tags:
+      - Order
+      summary: get Single Order
+      operationId: getSingleOrder
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    patch:
+      tags:
+      - Order
+      summary: update Single Order
+      operationId: updateSingleOrder
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    LoginRequest:
+      title: LoginRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: ritesh@gmail.com
+        password: qwerty
+    RegisterRequest:
+      title: RegisterRequest
+      required:
+      - name
+      - email
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: ritesh
+        email: ritesh@gmail.com
+        password: qwerty
+    CreateReviewRequest:
+      title: CreateReviewRequest
+      required:
+      - product
+      - rating
+      - title
+      - comment
+      type: object
+      properties:
+        product:
+          type: string
+        rating:
+          type: integer
+          format: int32
+        title:
+          type: string
+        comment:
+          type: string
+      example:
+        product: 658a7f971da6366194a31d00
+        rating: 2
+        title: Not Recommended
+        comment: the material in very bad, only the design is good
+    UpdateReviewRequest:
+      title: UpdateReviewRequest
+      required:
+      - rating
+      - title
+      - comment
+      type: object
+      properties:
+        rating:
+          type: integer
+          format: int32
+        title:
+          type: string
+        comment:
+          type: string
+      example:
+        rating: 2
+        title: a review Title
+        comment: a review comment
+    CreateOrderRequest:
+      title: CreateOrderRequest
+      required:
+      - tax
+      - shippingFee
+      - items
+      type: object
+      properties:
+        tax:
+          type: integer
+          format: int32
+        shippingFee:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+          description: ''
+      example:
+        tax: 399
+        shippingFee: 499
+        items:
+        - name: accent chair
+          price: 2599
+          image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+          amount: 10
+          product: 658a7f971da6366194a31d00
+    Item:
+      title: Item
+      required:
+      - name
+      - price
+      - image
+      - amount
+      - product
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        image:
+          type: string
+        amount:
+          type: integer
+          format: int32
+        product:
+          type: string
+      example:
+        name: accent chair
+        price: 2599
+        image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+        amount: 10
+        product: 658a7f971da6366194a31d00
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+- httpBearer: []
+tags:
+- name: Auth
+- name: Users
+- name: Product
+- name: Review
+- name: Order
