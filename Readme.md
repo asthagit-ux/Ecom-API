@@ -48,9 +48,4 @@ A fully functional RESTful API for an e-commerce backend built with **Node.js**,
 - [MongoDB](https://www.mongodb.com/)
 - npm or yarn
 
-### 📦 Installation
 
-```bash
-git clone https://github.com/ritesh027/Ecommerce-API.git
-cd Ecommerce-API
-npm install
